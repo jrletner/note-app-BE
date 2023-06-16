@@ -4,6 +4,18 @@ module Api
       def index
         render json: { message: "this is right", status: 200 }
       end
+
+      def show
+      end
+
+      def destroy
+      end
+
+      def update
+      end
+
+      def create
+      end
     end
   end
 end
