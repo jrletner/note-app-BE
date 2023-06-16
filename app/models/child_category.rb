@@ -1,0 +1,2 @@
+class ChildCategory < ApplicationRecord
+end
