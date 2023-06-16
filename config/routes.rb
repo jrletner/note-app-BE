@@ -23,9 +23,9 @@ Rails.application.routes.draw do
         get :show
         # api/V1/images/destroy, to: "images#logout"
         delete :destroy
-        # api/V1/notes/, to: "images#index"
+        # api/V1/images/index, to: "images#index"
         get :index
-        # api/V1/images/, to: "images#update"
+        # api/V1/images/update, to: "images#update"
         put :update
       end
       namespace :links do
@@ -35,9 +35,9 @@ Rails.application.routes.draw do
         get :show
         # api/V1/links/destroy, to: "links#logout"
         delete :destroy
-        # api/V1/notes/links, to: "links#index"
+        # api/V1/links/index, to: "links#index"
         get :index
-        # api/V1/links/, to: "links#update"
+        # api/V1/links/update, to: "links#update"
         put :update
       end
     end
