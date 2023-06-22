@@ -8,7 +8,7 @@ class User < ApplicationRecord
         token = Token.create(
             value: SecureRandom.hex,
             user_id: id,
-            expiry: DateTime.current, 
+            expiry: DateTime.current + 7.days, 
             ip: ip
         )
     end

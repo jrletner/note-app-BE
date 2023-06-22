@@ -1,5 +1,37 @@
 class Api::V1::ApplicationController < ActionController:: API 
-    def render_error(errors:, status: :internal_server_error)
+
+    before_action :authenticate
+
+    include ActionController::HttpAuthentication::Token::ControllerMethods
+      
+    def authenticate
+        authenticate_token || render_unauthorized
+    end
+
+    def authenticate_token
+        @ip = request.remote_ip || 'uknown'
+        authenticate_with_http_token do |token, _option|
+          @token = Token.find_by(value: token)
+           
+          if @token.nil?
+            render_unauthorized
+          else
+            if @token.expiry.after?(DateTime.now) && @token.revocation_date.blank? 
+              @current_user = @token.user
+              @current_user
+            else 
+              render_unauthorized
+            end
+          end
+        end
+    end
+
+      def render_unauthorized
+        logger.debug "*** UNAUTHORIZED REQUEST ***"
+        render_error(errors: 'Bad credentials', status: 401)
+      end
+    
+      def render_error(errors:, status: :internal_server_error)
         render json: {
           errors: errors,
           status: status,
@@ -13,4 +45,6 @@ class Api::V1::ApplicationController < ActionController:: API
           payload: payload
         }, status: status
       end 
+
+      
 end

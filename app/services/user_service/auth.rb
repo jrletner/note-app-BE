@@ -7,5 +7,11 @@ module UserService
             token = user.generate_token!(ip)
             ServiceContract.success(user: user, token: token)
         end
+
+        def self.logout(user, token)
+            return ServiceContract.success(true) if user && token.update(revocation_date: DateTime.now)
+
+            ServiceContract.error("Logout failed")
+        end
     end
 end
