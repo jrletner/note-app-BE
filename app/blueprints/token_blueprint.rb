@@ -1,4 +1,5 @@
 class TokenBlueprint < Blueprinter::Base
-    identifier :id
-    fields :expiry, :ip, :revocation_date, :value, :created_at, :updated_at, :user_id
+  #Don't really have a need to return the Token ID in the payload
+  #identifier :id
+  fields :expiry, :revocation_date, :value
 end

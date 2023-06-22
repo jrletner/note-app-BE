@@ -17,7 +17,8 @@ module Api
         render_error(errors: "Invalid User", status: 401) and return unless result.success?
         payload = {
           user: UserBlueprint.render_as_hash(result.payload[:user], view: :login),
-          token: TokenBlueprint.render_as_hash(result.payload[:token]),
+          #Don't need this here since we are calling the TokenBlueprint from the :login def in the UserBlueprint
+          #token: TokenBlueprint.render_as_hash(result.payload[:token]),
           status: 200,
         }
         render_success(payload: payload, status: 200)
