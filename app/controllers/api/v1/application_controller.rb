@@ -1,3 +1,4 @@
+
 class Api::V1::ApplicationController < ActionController:: API 
 
     before_action :authenticate
@@ -48,3 +49,4 @@ class Api::V1::ApplicationController < ActionController:: API
 
       
 end
+

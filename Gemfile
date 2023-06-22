@@ -6,10 +6,23 @@ ruby "3.2.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
-# Use sqlite3 as the database for Active Record
-gem "bcrypt"
+gem "rswag-api"
+gem "rswag-ui"
+
 gem "blueprinter"
 gem "oj"
+
+group :development, :test do
+  gem "rspec-rails"
+  gem "rswag-specs"
+  gem "faker"
+  gem "factory_bot_rails"
+  gem "rswag"
+end
+
+# Use sqlite3 as the database for Active Record
+gem "bcrypt"
+
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
