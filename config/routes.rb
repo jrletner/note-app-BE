@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
-
-     namespace :api, default: { format: :json } do
-        namespace :v1 do
-           namespace :users do
-            post :login
-            post :create 
-            get :me 
-            delete :logout
-           end
-        end
-     end
-
   namespace :api, defaults: { format: :json } do
     # version 1
     # api/v1
     namespace :v1 do
+      # api/v1/users
+      namespace :users do
+        # api/V1/users/login, to: "users#login"
+        post :login
+        # api/V1/users/create, to: "users#create"
+        post :create
+        # api/V1/users/me, to: "users#me"
+        get :me
+        # api/V1/users/logout, to: "users#logout"
+        delete :logout
+      end
       # api/v1/notes
       namespace :notes do
         # api/V1/notes/create, to: "notes#create"
@@ -54,5 +53,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end
