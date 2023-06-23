@@ -1,7 +1,5 @@
 class ParentCategory < ApplicationRecord
-    belongs_to :user
-    has_many :child_categories
-    
-    validates :title, presence: true
-
+  has_many :child_categories
+  belongs_to :user
+  validates :title, presence: true
 end
