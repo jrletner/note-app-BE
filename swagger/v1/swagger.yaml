@@ -29,7 +29,7 @@ paths:
         '200':
           description: successful
 servers:
-- url: https://{defaultHost}
+- url: https://localhost:3000
   variables:
     defaultHost:
-      default: www.example.com
+      default: http://localhost:3000
