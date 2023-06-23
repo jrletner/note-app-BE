@@ -17,7 +17,6 @@ group :development, :test do
   gem "rswag-specs"
   gem "faker"
   gem "factory_bot_rails"
-  gem "rswag"
 end
 
 # Use sqlite3 as the database for Active Record
