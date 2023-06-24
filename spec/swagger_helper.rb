@@ -18,7 +18,7 @@ RSpec.configure do |config|
     "v1/swagger.yaml" => {
       openapi: "3.0.1",
       info: {
-        title: "Note App by: Two in the front, one in the rear",
+        title: "Note App by: Two in the Front, One in the Rear",
         subtitle: "Note App",
         version: "v1",
       },

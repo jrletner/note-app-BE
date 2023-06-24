@@ -1,4 +1,5 @@
 class NotesBlueprint < Blueprinter::Base
   identifier :id
-  fields :name, :description
+  fields :title, :description
+  association :user, blueprint: UserBlueprint
 end
