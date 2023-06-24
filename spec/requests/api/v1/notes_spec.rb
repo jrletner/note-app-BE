@@ -1,10 +1,10 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/v1/users', type: :request do
+RSpec.describe 'api/v1/notes', type: :request do
 
-  path '/api/v1/users/login' do
+  path '/api/v1/notes/create' do
 
-    post('login user') do
+    post('create note') do
       response(200, 'successful') do
 
         after do |example|
@@ -19,9 +19,9 @@ RSpec.describe 'api/v1/users', type: :request do
     end
   end
 
-  path '/api/v1/users/create' do
+  path '/api/v1/notes/show' do
 
-    post('create user') do
+    get('show note') do
       response(200, 'successful') do
 
         after do |example|
@@ -36,9 +36,9 @@ RSpec.describe 'api/v1/users', type: :request do
     end
   end
 
-  path '/api/v1/users/me' do
+  path '/api/v1/notes/destroy' do
 
-    get('me user') do
+    delete('delete note') do
       response(200, 'successful') do
 
         after do |example|
@@ -53,9 +53,26 @@ RSpec.describe 'api/v1/users', type: :request do
     end
   end
 
-  path '/api/v1/users/logout' do
+  path '/api/v1/notes/index' do
 
-    delete('logout user') do
+    get('list notes') do
+      response(200, 'successful') do
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/notes/update' do
+
+    put('update note') do
       response(200, 'successful') do
 
         after do |example|
