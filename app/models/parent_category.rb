@@ -1,5 +1,6 @@
 class ParentCategory < ApplicationRecord
-  has_many :child_categories
-  belongs_to :user
   validates :title, presence: true
+
+  belongs_to :user
+  has_many :child_categories, dependent: :destroy
 end
