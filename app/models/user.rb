@@ -3,10 +3,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :password, presence: true
-  has_many :parent_categories
-  has_many :notes
-
   has_many :tokens
+
+  has_many :notes, dependent: :destroy
+  has_many :parent_categories, dependent: :destroy
 
   def generate_token!(ip)
     token = Token.create(
