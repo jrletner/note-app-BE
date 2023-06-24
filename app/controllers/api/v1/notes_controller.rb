@@ -4,9 +4,9 @@ module Api
       def index
         notes = Note.all
         payload = {
-          notes: notes,
+          notes: NotesBlueprint.render_as_hash(notes),
         }
-        render json: { success: true, payload: payload, status: 200 }, status: 200
+        render_success(payload: payload, status: 200)
       end
 
       def show
@@ -19,6 +19,12 @@ module Api
       end
 
       def create
+        result = Api::Notes.new_note(params)
+        render_error(errors: "Invalid Note", status: 400) and return unless result.success?
+        payload = {
+          note: NotesBlueprint.render_as_hash(result.payload),
+        }
+        render_success(payload: payload, status: 201)
       end
     end
   end
