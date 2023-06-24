@@ -1,17 +1,28 @@
-require 'swagger_helper'
+require "swagger_helper"
 
-RSpec.describe 'api/v1/notes', type: :request do
+RSpec.describe "api/v1/notes", type: :request do
 
-  path '/api/v1/notes/create' do
-
-    post('create note') do
-      response(200, 'successful') do
-
+  #CREATE NOTE
+  path "/api/v1/notes/create" do
+    post("create note") do
+      description "Create a new note"
+      tags "NOTES"
+      security [bearer_auth: []]
+      consumes "application/json"
+      parameter name: :create, in: :body, schema: {
+                  type: "object",
+                  properties: {
+                    title: { type: "string" },
+                    description: { type: "string" },
+                    user_id: { type: "number" },
+                  },
+                }
+      response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
+            "application/json" => {
+              example: JSON.parse(response.body, symbolize_names: true),
+            },
           }
         end
         run_test!
@@ -19,16 +30,15 @@ RSpec.describe 'api/v1/notes', type: :request do
     end
   end
 
-  path '/api/v1/notes/show' do
-
-    get('show note') do
-      response(200, 'successful') do
-
+  #SHOW A SINGLE NOTE
+  path "/api/v1/notes/show" do
+    get("show note") do
+      response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
+            "application/json" => {
+              example: JSON.parse(response.body, symbolize_names: true),
+            },
           }
         end
         run_test!
@@ -36,16 +46,15 @@ RSpec.describe 'api/v1/notes', type: :request do
     end
   end
 
-  path '/api/v1/notes/destroy' do
-
-    delete('delete note') do
-      response(200, 'successful') do
-
+  #DELETE A NOTE
+  path "/api/v1/notes/destroy" do
+    delete("delete note") do
+      response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
+            "application/json" => {
+              example: JSON.parse(response.body, symbolize_names: true),
+            },
           }
         end
         run_test!
@@ -53,16 +62,15 @@ RSpec.describe 'api/v1/notes', type: :request do
     end
   end
 
-  path '/api/v1/notes/index' do
-
-    get('list notes') do
-      response(200, 'successful') do
-
+  #SHOW ALL NOTES
+  path "/api/v1/notes/index" do
+    get("list notes") do
+      response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
+            "application/json" => {
+              example: JSON.parse(response.body, symbolize_names: true),
+            },
           }
         end
         run_test!
@@ -70,16 +78,15 @@ RSpec.describe 'api/v1/notes', type: :request do
     end
   end
 
-  path '/api/v1/notes/update' do
-
-    put('update note') do
-      response(200, 'successful') do
-
+  #UPDATE A NOTE
+  path "/api/v1/notes/update" do
+    put("update note") do
+      response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
+            "application/json" => {
+              example: JSON.parse(response.body, symbolize_names: true),
+            },
           }
         end
         run_test!
