@@ -8,7 +8,6 @@ RSpec.describe "api/v1/notes", type: :request do
       description "Create a new note"
       tags "NOTES"
       security [bearer_auth: []]
-      consumes "application/json"
       parameter name: :create, in: :body, schema: {
                   type: "object",
                   properties: {
@@ -33,6 +32,9 @@ RSpec.describe "api/v1/notes", type: :request do
   #SHOW A SINGLE NOTE
   path "/api/v1/notes/show" do
     get("show note") do
+      description "Get a single note"
+      tags "NOTES"
+      security [bearer_auth: []]
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -49,6 +51,9 @@ RSpec.describe "api/v1/notes", type: :request do
   #DELETE A NOTE
   path "/api/v1/notes/destroy" do
     delete("delete note") do
+      description "Delete a single note"
+      tags "NOTES"
+      security [bearer_auth: []]
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -65,6 +70,9 @@ RSpec.describe "api/v1/notes", type: :request do
   #SHOW ALL NOTES
   path "/api/v1/notes/index" do
     get("list notes") do
+      description "Get all notes"
+      tags "NOTES"
+      security [bearer_auth: []]
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -81,6 +89,9 @@ RSpec.describe "api/v1/notes", type: :request do
   #UPDATE A NOTE
   path "/api/v1/notes/update" do
     put("update note") do
+      description "Update a single note"
+      tags "NOTES"
+      security [bearer_auth: []]
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {

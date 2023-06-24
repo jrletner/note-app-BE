@@ -1,7 +1,8 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: 'Note App by: Two in the front, one in the rear'
+  subtitle: Note App
   version: v1
 paths:
   "/api/v1/notes/create":
@@ -31,29 +32,59 @@ paths:
   "/api/v1/notes/show":
     get:
       summary: show note
+      description: Get a single note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
   "/api/v1/notes/destroy":
     delete:
       summary: delete note
+      description: Delete a single note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
   "/api/v1/notes/index":
     get:
       summary: list notes
+      description: Get all notes
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
   "/api/v1/notes/update":
     put:
       summary: update note
+      description: Update a single note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
+consumes:
+- application/json
+produces:
+- application/json
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearer_format: string
 servers:
 - url: http://{defaultHost}
   variables:
     defaultHost:
-      default: http://localhost:3000
+      default: localhost:3000
