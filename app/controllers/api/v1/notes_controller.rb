@@ -2,7 +2,11 @@ module Api
   module V1
     class NotesController < Api::V1::ApplicationController
       def index
-        render json: { message: "this is right", status: 200 }
+        notes = Note.all
+        payload = {
+          notes: notes,
+        }
+        render json: { success: true, payload: payload, status: 200 }, status: 200
       end
 
       def show
