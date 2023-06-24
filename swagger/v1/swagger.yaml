@@ -4,32 +4,38 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/users/login":
+  "/api/v1/notes/create":
     post:
-      summary: login user
+      summary: create note
       responses:
         '200':
           description: successful
-  "/api/v1/users/create":
-    post:
-      summary: create user
-      responses:
-        '200':
-          description: successful
-  "/api/v1/users/me":
+  "/api/v1/notes/show":
     get:
-      summary: me user
+      summary: show note
       responses:
         '200':
           description: successful
-  "/api/v1/users/logout":
+  "/api/v1/notes/destroy":
     delete:
-      summary: logout user
+      summary: delete note
+      responses:
+        '200':
+          description: successful
+  "/api/v1/notes/index":
+    get:
+      summary: list notes
+      responses:
+        '200':
+          description: successful
+  "/api/v1/notes/update":
+    put:
+      summary: update note
       responses:
         '200':
           description: successful
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: http://localhost:3000
