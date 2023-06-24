@@ -7,9 +7,27 @@ paths:
   "/api/v1/notes/create":
     post:
       summary: create note
+      description: Create a new note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                user_id:
+                  type: number
   "/api/v1/notes/show":
     get:
       summary: show note

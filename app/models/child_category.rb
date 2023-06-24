@@ -1,5 +1,6 @@
 class ChildCategory < ApplicationRecord
-  belongs_to :parent_categories
   validates :title, presence: true
-  has_many :notes
+
+  belongs_to :parent_category, class_name: "ParentCategory", foreign_key: "parent_categories_id"
+  has_many :notes, dependent: :destroy
 end
