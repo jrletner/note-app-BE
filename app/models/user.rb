@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password validations: true
   validates :email, uniqueness: true
+  validates :email, presence: true
+  validates :password, presence: true
   has_many :parent_categories
   has_many :notes
 
