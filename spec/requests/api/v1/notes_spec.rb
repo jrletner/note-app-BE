@@ -31,10 +31,14 @@ RSpec.describe "api/v1/notes", type: :request do
 
   #SHOW A SINGLE NOTE
   path "/api/v1/notes/show" do
-    get("show note") do
+    get("show single note") do
       description "Get a single note"
       tags "NOTES"
       security [bearer_auth: []]
+      parameter name: :id, in: :query, required: true, schema: {
+                  type: "integer",
+                  description: "ID of the note",
+                }
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -50,10 +54,14 @@ RSpec.describe "api/v1/notes", type: :request do
 
   #DELETE A NOTE
   path "/api/v1/notes/destroy" do
-    delete("delete note") do
+    delete("delete single note") do
       description "Delete a single note"
       tags "NOTES"
       security [bearer_auth: []]
+      parameter name: :id, in: :query, required: true, schema: {
+                  type: "integer",
+                  description: "ID of the note",
+                }
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -69,7 +77,7 @@ RSpec.describe "api/v1/notes", type: :request do
 
   #SHOW ALL NOTES
   path "/api/v1/notes/index" do
-    get("list notes") do
+    get("show all notes") do
       description "Get all notes"
       tags "NOTES"
       security [bearer_auth: []]
@@ -88,10 +96,18 @@ RSpec.describe "api/v1/notes", type: :request do
 
   #UPDATE A NOTE
   path "/api/v1/notes/update" do
-    put("update note") do
+    put("update single note") do
       description "Update a single note"
       tags "NOTES"
       security [bearer_auth: []]
+      parameter name: :update, in: :body, schema: {
+                  type: "object",
+                  properties: {
+                    id: { type: "number" },
+                    title: { type: "string" },
+                    description: { type: "string" },
+                  },
+                }
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
