@@ -10,12 +10,40 @@ module Api
       end
 
       def show
+        note = Note.find(params[:id])
+        payload = {
+          note: NotesBlueprint.render_as_hash(note),
+        }
+        render_success(payload: payload, status: 200)
       end
 
       def destroy
+        result = Api::Notes.delete_note(params)
+        render_error(errors: "There was an error deleting the note", status: 400) and return unless result.success?
+        payload = {
+          status: "success",
+          message: "The note was successfully deleted",
+          note: NotesBlueprint.render_as_hash(result.payload),
+          status: 201,
+        }
+        render_success(payload: payload)
       end
 
       def update
+        prev_note = Note.find(params[:id])
+        result = Api::Notes.update_note(params)
+        render_error(errors: "There was an error updating the note", status: 400) and return unless result.success?
+        previous_values = {
+          id: prev_note[:id],
+          title: prev_note[:title],
+          description: prev_note[:description],
+        }
+        payload = {
+          note: NotesBlueprint.render_as_hash(result.payload),
+          previous_values: previous_values,
+          status: 201,
+        }
+        render_success(payload: payload)
       end
 
       def create
