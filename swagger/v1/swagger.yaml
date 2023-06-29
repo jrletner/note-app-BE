@@ -31,29 +31,43 @@ paths:
                   type: number
   "/api/v1/notes/show":
     get:
-      summary: show note
+      summary: show single note
       description: Get a single note
       tags:
       - NOTES
       security:
       - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the note
       responses:
         '200':
           description: successful
   "/api/v1/notes/destroy":
     delete:
-      summary: delete note
+      summary: delete single note
       description: Delete a single note
       tags:
       - NOTES
       security:
       - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the note
       responses:
         '200':
           description: successful
   "/api/v1/notes/index":
     get:
-      summary: list notes
+      summary: show all notes
       description: Get all notes
       tags:
       - NOTES
@@ -64,12 +78,49 @@ paths:
           description: successful
   "/api/v1/notes/update":
     put:
-      summary: update note
+      summary: update single note
       description: Update a single note
       tags:
       - NOTES
       security:
       - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                title:
+                  type: string
+                description:
+                  type: string
+  "/api/v1/users/login":
+    post:
+      summary: login user
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/create":
+    post:
+      summary: create user
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/me":
+    get:
+      summary: me user
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/logout":
+    delete:
+      summary: logout user
       responses:
         '200':
           description: successful

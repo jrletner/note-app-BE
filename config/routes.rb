@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => "/api-docs"
   mount Rswag::Api::Engine => "/api-docs"
-
   namespace :api, defaults: { format: :json } do
     # version 1
     # api/v1
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
         post :create
         # api/V1/notes/show, to: "notes#me"
         get :show
-        # api/V1/notes/destroy, to: "notes#logout"
+        # api/V1/notes/destroy, to: "notes#destroy"
         delete :destroy
         # api/V1/notes/, to: "notes#index"
         get :index
@@ -35,7 +34,7 @@ Rails.application.routes.draw do
         post :create
         # api/V1/images/show, to: "images#me"
         get :show
-        # api/V1/images/destroy, to: "images#logout"
+        # api/V1/images/destroy, to: "images#destroy"
         delete :destroy
         # api/V1/images/index, to: "images#index"
         get :index
@@ -47,7 +46,7 @@ Rails.application.routes.draw do
         post :create
         # api/V1/links/show, to: "links#me"
         get :show
-        # api/V1/links/destroy, to: "links#logout"
+        # api/V1/links/destroy, to: "links#destroy"
         delete :destroy
         # api/V1/links/index, to: "links#index"
         get :index

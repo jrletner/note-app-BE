@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_235812) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
   create_table "child_categories", force: :cascade do |t|
     t.string "title"
     t.integer "parent_categories_id", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_235812) do
     t.string "image_path", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link_name", null: false
     t.index ["notes_id"], name: "index_images_on_notes_id"
   end
 
@@ -32,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_235812) do
     t.string "link", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link_name"
     t.index ["notes_id"], name: "index_links_on_notes_id"
   end
 
