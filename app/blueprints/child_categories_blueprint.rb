@@ -1,5 +1,5 @@
 class ChildCategoryBlueprint < Blueprinter::Base
     identifier :id
     fields :title
-    association :user, blueprint: UserBlueprint
+    association :parent_category, blueprint: ParentCategoryBlueprint
 end
