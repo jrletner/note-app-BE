@@ -103,24 +103,78 @@ paths:
   "/api/v1/users/login":
     post:
       summary: login user
+      description: Login a user
+      tags:
+      - USERS
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
   "/api/v1/users/create":
     post:
       summary: create user
+      description: Create a user
+      tags:
+      - USERS
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
   "/api/v1/users/me":
     get:
       summary: me user
+      description: Get User
+      tags:
+      - USERS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the user
       responses:
         '200':
           description: successful
   "/api/v1/users/logout":
     delete:
       summary: logout user
+      description: logout user
+      tags:
+      - USERS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          email:
+            type: string
+          password:
+            type: string
       responses:
         '200':
           description: successful
