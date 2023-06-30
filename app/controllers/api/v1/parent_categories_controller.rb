@@ -24,6 +24,11 @@ module Api
             end
         
             def create
+                result = Api::Parent_Categories.new_parent_category(params)
+                render_error(errors: "Invalid Parent Category", status: 400) and return unless result.success?
+                payload = {
+                    parent_category: ParentCategoryBlueprint.render_as_hash(parent_category)
+                }
             end
         end
     end
