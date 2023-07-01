@@ -18,16 +18,28 @@ RSpec.configure do |config|
     "v1/swagger.yaml" => {
       openapi: "3.0.1",
       info: {
-        title: "API V1",
+        title: "Note App by: Two in the Front, One in the Rear",
+        subtitle: "Note App",
         version: "v1",
       },
       paths: {},
+      consumes: ["application/json"],
+      produces: ["application/json"],
+      components: {
+        securitySchemes: {
+          bearer_auth: {
+            type: :http,
+            scheme: :bearer,
+            bearer_format: :string,
+          },
+        },
+      },
       servers: [
         {
           url: "http://{defaultHost}",
           variables: {
             defaultHost: {
-              default: "http://localhost:3000",
+              default: "localhost:3000",
             },
           },
         },

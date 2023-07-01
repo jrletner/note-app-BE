@@ -1,7 +1,8 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: 'Note App by: Two in the Front, One in the Rear'
+  subtitle: Note App
   version: v1
 paths:
   "/api/v1/notes/create":
@@ -30,30 +31,165 @@ paths:
                   type: number
   "/api/v1/notes/show":
     get:
-      summary: show note
+      summary: show single note
+      description: Get a single note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the note
       responses:
         '200':
           description: successful
   "/api/v1/notes/destroy":
     delete:
-      summary: delete note
+      summary: delete single note
+      description: Delete a single note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the note
       responses:
         '200':
           description: successful
   "/api/v1/notes/index":
     get:
-      summary: list notes
+      summary: show all notes
+      description: Get all notes
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
   "/api/v1/notes/update":
     put:
-      summary: update note
+      summary: update single note
+      description: Update a single note
+      tags:
+      - NOTES
+      security:
+      - bearer_auth: []
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                title:
+                  type: string
+                description:
+                  type: string
+  "/api/v1/users/login":
+    post:
+      summary: login user
+      description: Login a user
+      tags:
+      - USERS
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+  "/api/v1/users/create":
+    post:
+      summary: create user
+      description: Create a user
+      tags:
+      - USERS
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+  "/api/v1/users/me":
+    get:
+      summary: me user
+      description: Get User
+      tags:
+      - USERS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the user
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/logout":
+    delete:
+      summary: logout user
+      description: logout user
+      tags:
+      - USERS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          email:
+            type: string
+          password:
+            type: string
+      responses:
+        '200':
+          description: successful
+consumes:
+- application/json
+produces:
+- application/json
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearer_format: string
 servers:
 - url: http://{defaultHost}
   variables:
     defaultHost:
-      default: http://localhost:3000
+      default: localhost:3000
