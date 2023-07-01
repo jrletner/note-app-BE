@@ -1,5 +1,5 @@
 databases:
-  - name: noteapp-db
+  - name: noteapp
     databaseName: noteapp
     user: user
 
