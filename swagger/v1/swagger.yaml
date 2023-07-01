@@ -189,7 +189,7 @@ components:
       scheme: bearer
       bearer_format: string
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
-      default: localhost:3000
+      default: three-guys-noteapp-be.onrender.com

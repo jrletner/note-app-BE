@@ -36,10 +36,11 @@ RSpec.configure do |config|
       },
       servers: [
         {
-          url: "http://{defaultHost}",
+          url: "https://{defaultHost}",
           variables: {
             defaultHost: {
-              default: "localhost:3000",
+              #default: "localhost:3000",
+              default: "three-guys-noteapp-be.onrender.com",
             },
           },
         },
