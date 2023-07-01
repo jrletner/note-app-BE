@@ -1,6 +1,6 @@
 databases:
-  - name: noteapp
-    databaseName: noteapp_qmwy
+  - name: noteapp_qmwy
+    databaseName: noteapp
     user: user
 
 services:
