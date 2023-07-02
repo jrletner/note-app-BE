@@ -1,7 +1,7 @@
 databases:
   - name: noteapp
     databaseName: noteapp_qmwy
-    user: user
+    user: owenwilson
 
 services:
   - type: web
