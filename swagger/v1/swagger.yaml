@@ -5,6 +5,101 @@ info:
   subtitle: Note App
   version: v1
 paths:
+  "/api/v1/images/create":
+    post:
+      summary: create image
+      description: Create a new image
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image_path:
+                  type: string
+                link_name:
+                  type: string
+                user_id:
+                  type: number
+  "/api/v1/images/show":
+    get:
+      summary: show image
+      description: Get a single image
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the image
+      responses:
+        '200':
+          description: successful
+  "/api/v1/images/destroy":
+    delete:
+      summary: delete image
+      description: Delete a image
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the image
+      responses:
+        '200':
+          description: successful
+  "/api/v1/images/index":
+    get:
+      summary: list images
+      description: Get all images
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/api/v1/images/update":
+    put:
+      summary: update image
+      description: Update a iamge
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                image_path:
+                  type: string
+                link_name:
+                  type: string
   "/api/v1/links/create":
     post:
       summary: create link
