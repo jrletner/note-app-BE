@@ -18,9 +18,31 @@ module Api
       end
 
       def destroy
+        result = Api::Parent_Categories.delete_parent(params)
+        render_error(errors: "There was an error deleting the parent catagory", status: 400) and return unless result.success?
+        payload = {
+          status: "success",
+          message: "The parent catagory was successfully deleted",
+          note: Parent_Categories.render_as_hash(result.payload),
+          status: 201,
+        }
+        render_success(payload: payload)
       end
 
       def update
+        prev_parent = Parent_Categories.find(params[:id])
+        result = Api::Parent_Categories.update_parent(params)
+        render_error(errors: "There was an error updating the parent catagory", status: 400) and return unless result.success?
+        previous_values = {
+          id: prev_parent[:id],
+          title: prev_parent[:title]
+        }
+        payload = {
+          note: Parent_Categories.render_as_hash(result.payload),
+          previous_values: previous_values,
+          status: 201,
+        }
+        render_success(payload: payload)
       end
 
       def create
