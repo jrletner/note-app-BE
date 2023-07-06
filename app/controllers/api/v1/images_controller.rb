@@ -36,6 +36,7 @@ module Api
         previous_values = {
           id: prev_image[:id],
           image_path: prev_image[:image_path],
+          link_name: prev_image[:link_name],
           notes_id: prev_image[:notes_id],
         }
         payload = {
