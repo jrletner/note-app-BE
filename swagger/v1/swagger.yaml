@@ -5,6 +5,196 @@ info:
   subtitle: Note App
   version: v1
 paths:
+  "/api/v1/images/create":
+    post:
+      summary: create image
+      description: Create a new image
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image_path:
+                  type: string
+                link_name:
+                  type: string
+                notes_id:
+                  type: number
+  "/api/v1/images/show":
+    get:
+      summary: show image
+      description: Get a single image
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the image
+      responses:
+        '200':
+          description: successful
+  "/api/v1/images/destroy":
+    delete:
+      summary: delete image
+      description: Delete a image
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the image
+      responses:
+        '200':
+          description: successful
+  "/api/v1/images/index":
+    get:
+      summary: list images
+      description: Get all images
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/api/v1/images/update":
+    put:
+      summary: update image
+      description: Update a iamge
+      tags:
+      - IMAGES
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                image_path:
+                  type: string
+                link_name:
+                  type: string
+  "/api/v1/links/create":
+    post:
+      summary: create link
+      description: Create a link
+      tags:
+      - LINKS
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                link:
+                  type: string
+                link_name:
+                  type: string
+                notes_id:
+                  type: number
+  "/api/v1/links/show":
+    get:
+      summary: show link
+      description: Get a single note
+      tags:
+      - LINKS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the link
+      responses:
+        '200':
+          description: successful
+  "/api/v1/links/destroy":
+    delete:
+      summary: delete link
+      description: Delete a single link
+      tags:
+      - LINKS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the link
+      responses:
+        '200':
+          description: successful
+  "/api/v1/links/index":
+    get:
+      summary: list links
+      description: Get all links
+      tags:
+      - LINKS
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/api/v1/links/update":
+    put:
+      summary: update link
+      description: Update a single link
+      tags:
+      - LINKS
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                link:
+                  type: string
+                link_name:
+                  type: string
   "/api/v1/notes/create":
     post:
       summary: create note
@@ -103,24 +293,78 @@ paths:
   "/api/v1/users/login":
     post:
       summary: login user
+      description: Login a user
+      tags:
+      - USERS
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
   "/api/v1/users/create":
     post:
       summary: create user
+      description: Create a user
+      tags:
+      - USERS
+      parameters: []
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
   "/api/v1/users/me":
     get:
       summary: me user
+      description: Get User
+      tags:
+      - USERS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the user
       responses:
         '200':
           description: successful
   "/api/v1/users/logout":
     delete:
       summary: logout user
+      description: logout user
+      tags:
+      - USERS
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          email:
+            type: string
+          password:
+            type: string
       responses:
         '200':
           description: successful
