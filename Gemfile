@@ -20,7 +20,6 @@ group :development, :test do
 end
 
 # Use sqlite3 as the database for Active Record
-gem "bcrypt"
 
 
 # Use the Puma web server [https://github.com/puma/puma]
