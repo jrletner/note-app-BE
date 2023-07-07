@@ -5,6 +5,97 @@ info:
   subtitle: Note App
   version: v1
 paths:
+  "/api/v1/child_categories/create":
+    post:
+      summary: create child_category
+      description: Create a new child category
+      tags:
+      - CHILD CATEGORY
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                parent_categories_id:
+                  type: number
+  "/api/v1/child_categories/show":
+    get:
+      summary: show child_category
+      description: Get a single child category
+      tags:
+      - CHILD CATEGORY
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the child category
+      responses:
+        '200':
+          description: successful
+  "/api/v1/child_categories/destroy":
+    delete:
+      summary: delete child_category
+      description: Get a single child category
+      tags:
+      - CHILD CATEGORY
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the child category
+      responses:
+        '200':
+          description: successful
+  "/api/v1/child_categories/index":
+    put:
+      summary: list child_categories
+      description: Show All
+      tags:
+      - CHILD CATEGORY
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/api/v1/child_categories/update":
+    put:
+      summary: update child_category
+      description: Create a new child category
+      tags:
+      - CHILD CATEGORY
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
   "/api/v1/images/create":
     post:
       summary: create image
@@ -289,6 +380,97 @@ paths:
                 title:
                   type: string
                 description:
+                  type: string
+  "/api/v1/parent_categories/create":
+    post:
+      summary: create parent_category
+      description: Create a new parent category
+      tags:
+      - PARENT CATEGORY
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                parent_categories_id:
+                  type: number
+  "/api/v1/parent_categories/show":
+    get:
+      summary: show parent_category
+      description: Get a single parent category
+      tags:
+      - PARENT CATEGORY
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the parent category
+      responses:
+        '200':
+          description: successful
+  "/api/v1/parent_categories/destroy":
+    delete:
+      summary: delete parent_category
+      description: Delete a single parent category
+      tags:
+      - PARENT CATEGORY
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: integer
+          description: ID of the parent category
+      responses:
+        '200':
+          description: successful
+  "/api/v1/parent_categories/index":
+    put:
+      summary: list parent_categories
+      description: Show All
+      tags:
+      - PARENT CATEGORY
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/api/v1/parent_categories/update":
+    put:
+      summary: update parent_category
+      description: Update a new parent category
+      tags:
+      - PARENT CATEGORY
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                title:
                   type: string
   "/api/v1/users/login":
     post:

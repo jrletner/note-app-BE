@@ -49,11 +49,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
   end
 
   create_table "parent_categories", force: :cascade do |t|
-    t.integer "users_id", null: false
+    t.integer "user_id", null: false
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_parent_categories_on_users_id"
+    t.index ["user_id"], name: "index_parent_categories_on_user_id"
   end
 
   create_table "tokens", force: :cascade do |t|
@@ -80,5 +80,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
   add_foreign_key "links", "notes", column: "notes_id"
   add_foreign_key "notes", "child_categories"
   add_foreign_key "notes", "users"
-  add_foreign_key "parent_categories", "users", column: "users_id"
+  add_foreign_key "parent_categories", "users"
 end
