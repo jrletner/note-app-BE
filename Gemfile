@@ -11,6 +11,7 @@ gem "rswag-ui"
 
 gem "blueprinter"
 gem "oj"
+gem "bcrypt"
 
 group :development, :test do
   gem "rspec-rails"
