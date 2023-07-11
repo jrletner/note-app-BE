@@ -13,10 +13,10 @@
 ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
   create_table "child_categories", force: :cascade do |t|
     t.string "title"
-    t.integer "parent_categories_id", null: false
+    t.integer "parent_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["parent_categories_id"], name: "index_child_categories_on_parent_categories_id"
+    t.index ["parent_category_id"], name: "index_child_categories_on_parent_category_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -75,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "child_categories", "parent_categories", column: "parent_categories_id"
+  add_foreign_key "child_categories", "parent_categories"
   add_foreign_key "images", "notes", column: "notes_id"
   add_foreign_key "links", "notes", column: "notes_id"
   add_foreign_key "notes", "child_categories"
