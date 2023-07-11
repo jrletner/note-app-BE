@@ -4,9 +4,9 @@ module Api
       def index
         parent_categories = ParentCategory.all
         payload = {
-          parent_categories: ParentCategoryBlueprint.render_as_hash(parent_categories),
+          parent_categories: ParentCategoriesBlueprint.render_as_hash(parent_categories),
         }
-        render_success(payload, status: 200)
+        render_success(payload: payload, status: 200)
       end
 
       def show
@@ -35,7 +35,7 @@ module Api
         render_error(errors: "There was an error updating the parent catagory", status: 400) and return unless result.success?
         previous_values = {
           id: prev_parent[:id],
-          title: prev_parent[:title]
+          title: prev_parent[:title],
         }
         payload = {
           note: Parent_Categories.render_as_hash(result.payload),

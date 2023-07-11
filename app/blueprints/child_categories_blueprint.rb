@@ -1,5 +1,5 @@
-class ChildCategoryBlueprint < Blueprinter::Base
+class ChildCategoriesBlueprint < Blueprinter::Base
   identifier :id
   fields :title
-  association :parent_category, blueprint: ParentCategoryBlueprint
+  association :parent_category, blueprint: ParentCategoriesBlueprint
 end

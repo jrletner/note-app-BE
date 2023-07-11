@@ -54,6 +54,8 @@ Rails.application.routes.draw do
         put :update
       end
       namespace :child_categories do
+        #api/V1/child_categories/index, to: "child_categories#index"
+        get :index
         #api/V1/child_categories/create, to: "child_categories#create"
         post :create
         #api/V1/child_categories/show, to: "child_categories#show"
@@ -66,6 +68,8 @@ Rails.application.routes.draw do
         put :update
       end
       namespace :parent_categories do
+        #api/V1/parent_categories/index, to: "parent_categories#index"
+        get :index
         #api/V1/parent_categories/create, to: "parent_categories#create"
         post :create
         #api/V1/parent_categories/show, to: "parent_categories#show"

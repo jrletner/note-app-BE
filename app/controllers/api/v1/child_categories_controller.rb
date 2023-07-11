@@ -4,9 +4,9 @@ module Api
       def index
         child_categories = ChildCategory.all
         payload = {
-          child_categories: ChildCategoryBlueprint.render_as_hash(child_categories),
+          child_categories: ChildCategoriesBlueprint.render_as_hash(child_categories),
         }
-        render_success(payload, status: 200)
+        render_success(payload: payload, status: 200)
       end
 
       def show
@@ -35,7 +35,7 @@ module Api
         render_error(errors: "There was an error updating the child catagory", status: 400) and return unless result.success?
         previous_values = {
           id: prev_child[:id],
-          title: prev_child[:title]
+          title: prev_child[:title],
         }
         payload = {
           note: Child_Categories.render_as_hash(result.payload),
