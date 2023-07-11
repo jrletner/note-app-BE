@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       # api/v1/users
       namespace :users do
+        # api/V1/users/index, to: "users#index"
+        get :index
         # api/V1/users/login, to: "users#login"
         post :login
         # api/V1/users/create, to: "users#create"

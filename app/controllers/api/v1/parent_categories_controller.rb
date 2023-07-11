@@ -12,9 +12,9 @@ module Api
       def show
         parent_category = ParentCategory.find(params[:id])
         payload = {
-          parent_category: ParentCategoryBlueprint.render_as_hash(parent_category),
+          parent_category: ParentCategoriesBlueprint.render_as_hash(parent_category),
         }
-        render_success(payload, status: 200)
+        render_success(payload: payload, status: 200)
       end
 
       def destroy
@@ -23,14 +23,14 @@ module Api
         payload = {
           status: "success",
           message: "The parent catagory was successfully deleted",
-          note: Parent_Categories.render_as_hash(result.payload),
+          note: ParentCategoriesBlueprint.render_as_hash(result.payload),
           status: 201,
         }
         render_success(payload: payload)
       end
 
       def update
-        prev_parent = Parent_Categories.find(params[:id])
+        prev_parent = ParentCategory.find(params[:id])
         result = Api::Parent_Categories.update_parent(params)
         render_error(errors: "There was an error updating the parent catagory", status: 400) and return unless result.success?
         previous_values = {
@@ -38,7 +38,7 @@ module Api
           title: prev_parent[:title],
         }
         payload = {
-          note: Parent_Categories.render_as_hash(result.payload),
+          note: ParentCategoriesBlueprint.render_as_hash(result.payload),
           previous_values: previous_values,
           status: 201,
         }
@@ -46,11 +46,12 @@ module Api
       end
 
       def create
-        result = Api::Parent_Categories.new_parent_category(params)
+        result = Api::ParentCategories.new_parent_category(params)
         render_error(errors: "Invalid Parent Category", status: 400) and return unless result.success?
         payload = {
-          parent_category: ParentCategoryBlueprint.render_as_hash(parent_category),
+          parent_category: ParentCategoriesBlueprint.render_as_hash(result.payload),
         }
+        render_success(payload: payload, status: 201)
       end
     end
   end

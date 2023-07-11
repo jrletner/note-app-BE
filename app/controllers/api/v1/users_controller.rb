@@ -3,6 +3,14 @@ module Api
     class UsersController < ApplicationController
       skip_before_action :authenticate, only: [:create, :login]
 
+      def index
+        users = User.all
+        payload = {
+          users: UserBlueprint.render_as_hash(users),
+        }
+        render_success(payload: payload, status: 200)
+      end
+
       def create
         result = UserService::Users.new_user(params)
         render_error(errors: "Invalid User", status: 400) and return unless result.success?
