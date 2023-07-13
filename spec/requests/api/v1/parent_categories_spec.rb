@@ -12,7 +12,7 @@ RSpec.describe 'api/v1/parent_categories', type: :request do
         type: "object",
         properties: {
           title: { type: "string"},
-          parent_categories_id: { type: "number"}}}
+          user_id: { type: "number"}}}
       response(200, 'successful') do
 
         after do |example|

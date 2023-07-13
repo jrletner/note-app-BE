@@ -403,7 +403,7 @@ paths:
               properties:
                 title:
                   type: string
-                parent_categories_id:
+                user_id:
                   type: number
   "/api/v1/parent_categories/show":
     get:
