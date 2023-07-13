@@ -14,6 +14,7 @@ RSpec.describe "api/v1/notes", type: :request do
                     title: { type: "string" },
                     description: { type: "string" },
                     user_id: { type: "number" },
+                    child_category: {type: "number" }
                   },
                 }
       response(200, "successful") do

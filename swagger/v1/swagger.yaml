@@ -310,6 +310,8 @@ paths:
                   type: string
                 user_id:
                   type: number
+                child_category:
+                  type: number
   "/api/v1/notes/show":
     get:
       summary: show single note
