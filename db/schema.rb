@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
 
   create_table "notes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "child_category_id", null: false
+    t.integer "child_category_id"
     t.string "title", null: false
     t.text "description", null: false
     t.datetime "created_at", null: false
