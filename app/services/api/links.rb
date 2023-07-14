@@ -13,7 +13,7 @@ module Api # same name as folder in services
     end
 
     def self.new_link(params)
-      link = Link.new(link: params[:link], link_name: params[:link_name], notes_id: params[:notes_id])
+      link = Link.new(link: params[:link], link_name: params[:link_name], note_id: params[:note_id])
       begin
         link.save! #link is valid
       rescue

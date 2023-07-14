@@ -20,21 +20,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "notes_id", null: false
+    t.integer "note_id", null: false
     t.string "image_path", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_name", null: false
-    t.index ["notes_id"], name: "index_images_on_notes_id"
+    t.index ["note_id"], name: "index_images_on_note_id"
   end
 
   create_table "links", force: :cascade do |t|
-    t.integer "notes_id", null: false
+    t.integer "note_id", null: false
     t.string "link", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_name"
-    t.index ["notes_id"], name: "index_links_on_notes_id"
+    t.index ["note_id"], name: "index_links_on_note_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -76,8 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_223018) do
   end
 
   add_foreign_key "child_categories", "parent_categories"
-  add_foreign_key "images", "notes", column: "notes_id"
-  add_foreign_key "links", "notes", column: "notes_id"
+  add_foreign_key "images", "notes"
+  add_foreign_key "links", "notes"
   add_foreign_key "notes", "child_categories"
   add_foreign_key "notes", "users"
   add_foreign_key "parent_categories", "users"

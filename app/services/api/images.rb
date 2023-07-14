@@ -13,7 +13,7 @@ module Api # same name as folder in services
     end
 
     def self.new_image(params)
-      image = Image.new(image_path: params[:image_path], link_name: params[:link_name], notes_id: params[:notes_id])
+      image = Image.new(image_path: params[:image_path], link_name: params[:link_name], note_id: params[:note_id])
       begin
         image.save! #Image is valid
       rescue
